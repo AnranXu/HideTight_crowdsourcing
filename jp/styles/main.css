@@ -1,0 +1,113 @@
+html{
+    width: 100%;
+    height: 100%;
+    overscroll-behavior-x: none; /* prevent two-finger swipe left/right to back/foward */
+    overscroll-behavior-y: contain; /* prevent two-finger swipe left/right to back/foward */
+    touch-action: none;
+}
+body{
+    background: #E4E9F7;
+    font-size: 100%;
+    width: 100%;
+    height: 100%;
+    font-family: var(--default-font-family);
+    cursor: default;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;
+    padding: 0px;
+    margin: 0px;
+    touch-action: none;
+}
+div{ /* This will work */
+    overscroll-behavior-x: none;
+    overscroll-behavior-y: contain;
+}
+a{
+    display: inline-block;
+    align-items: center;
+    text-decoration: none !important;
+}
+#toolbar{
+    position: relative;
+    left: 0;
+}
+#canvas-area{
+    position: relative;
+    background: #E4E9F7;
+    height: calc(100vh - 100px);
+    left: 0;
+    transition: all 0.5s ease;
+    cursor: url("../icons/cursor.svg") 10 10, auto;
+}
+#upload-input{
+    position: relative; 
+    width: 70px;
+    height: 80px;
+    top: -20px; 
+    bottom: 0; 
+    left: 70px;
+    right: 0; 
+    opacity: 0;
+    z-index: 1;
+}
+#upload-image{
+    width: 60px;
+    height: 60px;
+    content: url("../icons/upload.png");
+}
+.tool-area{
+    display: inline;
+    border-top: 30px;
+}
+.tool-name{
+    display: inline !important;
+    cursor: pointer;
+}
+#brush{
+    margin-left: 10px;
+    display: inline !important;
+    content: url("../icons/brush.png");
+}
+#eraser{
+    margin-left: 10px;
+    display: inline !important;
+    content: url("../icons/eraser.png");
+}
+#mosaic{
+    position: absolute;
+    margin: 0;
+    top:  0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 0;
+}
+#ori{
+    position: absolute;
+    margin: 0;
+    top:  0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 0;
+}
+#card-container{
+    z-index: 200;
+}
+#finish{
+    position: relative;
+    left: 100px;
+}
+#instruction{
+    position: relative;
+    top: 20px;
+}
+#agree{
+    display: inline !important;
+}
+#disagree{
+    display: inline !important;
+}

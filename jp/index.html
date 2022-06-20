@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="jp" dir="ltr" id="html">
+  <head>
+    <meta charset="UTF-8">
+    <!-- Boxiocns CDN Link -->
+    <!--script src="https://assets.crowd.aws/crowd-html-elements.js"></script-->
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.142.0.min.js"></script>
+    <!--script src="https://unpkg.com/boxicons@2.1.0/dist/boxicons.js"></script-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <!--link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'-->
+    <link rel="stylesheet" href="./styles/main.css"></link>
+    <!--Static Libraries-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/konva@8/konva.min.js"></script>
+</head>
+<body>
+    <div id="initial-space">
+        <div class="container">
+            <div class="row">
+                <div class="col-1"></div>
+                <div class="card border-dark mb-3 col-11" style="max-width: 80%;">
+                    <div class="card-header"><h2><strong>説明書</strong></h2></div>
+                    <div class="card-body text-dark">
+                        <h3 class="card-title"><strong>依頼内容</strong></h3>
+                        <p class="card-text"><h3>あなたにお願いしたいタスクは、ソーシャルネットワークサービス（FaceBook、Twitter、Instagramなど）で共有したことがある、または共有する予定の写真を10枚アップロードし、写真に含まれる<storng>プライバシーを脅かす可能性のある箇所</strong>に関して、可能な限り以下の作業を行っていただくことです。
+                        <p class="card-text"><h3>
+                            ボタン<img class="card-img" src="./icons/brush.png" alt="Brush" style="width: 70px; height: 70px;"><strong>「ブラシ」</strong>をクリックし、モザイクをかけたい部分にマウスを合わせます。</h3></p>
+                        <p class="card-text"><h3><strong>直接または間接的</strong>にプライバシーを脅かす内容が含まれている部分にモザイクを掛けてください。</h3></p>
+                        <p class="card-text"><h3>モザイクで一つの箇所を隠し終わったら、注釈のためにテキストボックスを挿入してください。</h3></p>
+                        <p class="card-text"><h3>追加したモザイクを削除したい場合は、<img class="card-img" src="./icons/eraser.png" alt="Eraser" style="width: 70px; height: 70px;"><strong>「消しゴム」</strong>ボタンをクリックし、モザイクを削除したい部分にマウスをあててください。</h3></p>
+                        <p class="card-text"><h3>また、モザイクや筆の大きさはお好みで調整できます。</h3></p>
+                        <p class="card-text"><h3><strong>Tips:</strong></h3></p>
+                        <ul class="card-text">
+                            <li>
+                                <h3>人を含まない写真をアップロードすることができます。</h3>
+                            </li>
+                            <li>
+                                <h3>風景だけの写真はアップロードしないでください。</h3>
+                            </li>
+                            <li>
+                                <h3>同じ場所で撮った写真を何枚もアップロードしないでください。</h3>
+                            </li>
+                            <li>
+                                <h3>可能であれば、異なるテーマの写真をアップロードするようにしてください。</h3>
+                            </li>
+                            <li>
+                                <h3>説明文はいつでも読み返すことができますので、この段階で実際の操作等に不明な点がある場合でも、心配ありません。</h3>
+                            </li>
+                        </ul>
+                    </div>
+                    <br>
+                    <span><h3>名前:</h3></span>
+                    <input type="text" id="particpant-name"><br>
+                    <span><h3>年齢:</h3></span>
+                    <input type="text" id="particpant-age"><br>
+                    <span><h3>国籍:</h3></span>
+                    <input type="text" id="particpant-nationality"><br>
+                    <span><h3>ワーカーズID:</h3></span>
+                    <input type="text" id="particpant-workerid"><br>
+                    <br>
+                    <div class="card-text"><h3>Please answer the following questions:</h3></div>
+                    <div id="bigfive">
+                        <div class="card-text"><h4>Q1: 私は自分が<strong>控えめな人間だ</strong>と思う。</h4></div>
+                        <div class="btn-group" role="group" required>
+                            <input type="radio" class="btn-check" name="Q1" id="Q1-1" autocomplete="off" value='1'>
+                            <label class="btn btn-outline-primary" for="Q1-1">全く同意しない</label>
+                            <input type="radio" class="btn-check" name="Q1" id="Q1-2" autocomplete="off" value='2'>
+                            <label class="btn btn-outline-primary" for="Q1-2">あまり同意しない</label>
+                            <input type="radio" class="btn-check" name="Q1" id="Q1-3" autocomplete="off" value='3'>
+                            <label class="btn btn-outline-primary" for="Q1-3">どちらでもない</label>
+                            <input type="radio" class="btn-check" name="Q1" id="Q1-4" autocomplete="off" value='4'>
+                            <label class="btn btn-outline-primary" for="Q1-4">少しそう思う</label>
+                            <input type="radio" class="btn-check" name="Q1" id="Q1-5" autocomplete="off" value='5'>
+                            <label class="btn btn-outline-primary" for="Q1-5">とてもそう思う</label>
+                        </div>
+                         <div class="card-text"><h4>私は自分が<strong>信じやすい人間だ</strong>と思う。</h4></div>
+                        <div class="btn-group" role="group" required>
+                            <input type="radio" class="btn-check" name="Q2" id="Q2-1" autocomplete="off" value='1'>
+                            <label class="btn btn-outline-primary" for="Q2-1">全く同意しない</label>
+                            <input type="radio" class="btn-check" name="Q2" id="Q2-2" autocomplete="off" value='2'>
+                            <label class="btn btn-outline-primary" for="Q2-2">あまり同意しない</label>
+                            <input type="radio" class="btn-check" name="Q2" id="Q2-3" autocomplete="off" value='3'>
+                            <label class="btn btn-outline-primary" for="Q2-3">どちらでもない</label>
+                            <input type="radio" class="btn-check" name="Q2" id="Q2-4" autocomplete="off" value='4'>
+                            <label class="btn btn-outline-primary" for="Q2-4">少しそう思う</label>
+                            <input type="radio" class="btn-check" name="Q2" id="Q2-5" autocomplete="off" value='5'>
+                            <label class="btn btn-outline-primary" for="Q2-5">とてもそう思う</label>
+                        </div>
+                        <div class="card-text"><h4>Q3: 私は自分が<strong>怠けがちな人間だ</strong>と思う。</h4></div>
+                        <div class="btn-group" role="group" required>
+                            <input type="radio" class="btn-check" name="Q3" id="Q3-1" autocomplete="off" value='1'>
+                            <label class="btn btn-outline-primary" for="Q3-1">全く同意しない</label>
+                            <input type="radio" class="btn-check" name="Q3" id="Q3-2" autocomplete="off" value='2'>
+                            <label class="btn btn-outline-primary" for="Q3-2">あまり同意しない</label>
+                            <input type="radio" class="btn-check" name="Q3" id="Q3-3" autocomplete="off" value='3'>
+                            <label class="btn btn-outline-primary" for="Q3-3">どちらでもない</label>
+                            <input type="radio" class="btn-check" name="Q3" id="Q3-4" autocomplete="off" value='4'>
+                            <label class="btn btn-outline-primary" for="Q3-4">少しそう思う</label>
+                            <input type="radio" class="btn-check" name="Q3" id="Q3-5" autocomplete="off" value='5'>
+                            <label class="btn btn-outline-primary" for="Q3-5">とてもそう思う</label>
+                        </div>
+                        <div class="card-text"><h4>Q4: 私は自分が、<strong>ストレスをうまく処理できる、リラックスした人間だ</strong>と思う。</h4></div>
+                        <div class="btn-group" role="group" required>
+                            <input type="radio" class="btn-check" name="Q4" id="Q4-1" autocomplete="off" value='1'>
+                            <label class="btn btn-outline-primary" for="Q4-1">全く同意しない</label>
+                            <input type="radio" class="btn-check" name="Q4" id="Q4-2" autocomplete="off" value='2'>
+                            <label class="btn btn-outline-primary" for="Q4-2">あまり同意しない</label>
+                            <input type="radio" class="btn-check" name="Q4" id="Q4-3" autocomplete="off" value='3'>
+                            <label class="btn btn-outline-primary" for="Q4-3">どちらでもない</label>
+                            <input type="radio" class="btn-check" name="Q4" id="Q4-4" autocomplete="off" value='4'>
+                            <label class="btn btn-outline-primary" for="Q4-4">少しそう思う</label>
+                            <input type="radio" class="btn-check" name="Q4" id="Q4-5" autocomplete="off" value='5'>
+                            <label class="btn btn-outline-primary" for="Q4-5">とてもそう思う</label>
+                        </div>
+                        <div class="card-text"><h4>Q5: 私は自分が<strong>芸術的なことにあまり興味がない人間だ</strong>と思う。</h4></div>
+                        <div class="btn-group" role="group" required>
+                            <input type="radio" class="btn-check" name="Q5" id="Q5-1" autocomplete="off" value='1'>
+                            <label class="btn btn-outline-primary" for="Q5-1">全く同意しない</label>
+                            <input type="radio" class="btn-check" name="Q5" id="Q5-2" autocomplete="off" value='2'>
+                            <label class="btn btn-outline-primary" for="Q5-2">あまり同意しない</label>
+                            <input type="radio" class="btn-check" name="Q5" id="Q5-3" autocomplete="off" value='3'>
+                            <label class="btn btn-outline-primary" for="Q5-3">どちらでもない</label>
+                            <input type="radio" class="btn-check" name="Q5" id="Q5-4" autocomplete="off" value='4'>
+                            <label class="btn btn-outline-primary" for="Q5-4">少しそう思う</label>
+                            <input type="radio" class="btn-check" name="Q5" id="Q5-5" autocomplete="off" value='5'>
+                            <label class="btn btn-outline-primary" for="Q5-5">とてもそう思う</label>
+                        </div>
+                        <div class="card-text"><h4>Q6:私は自分が<strong>社交的な人間だ</strong>と思う。</h4></div>
+                        <div class="btn-group" role="group" required>
+                            <input type="radio" class="btn-check" name="Q6" id="Q6-1" autocomplete="off" value='1'>
+                            <label class="btn btn-outline-primary" for="Q6-1">全く同意しない</label>
+                            <input type="radio" class="btn-check" name="Q6" id="Q6-2" autocomplete="off" value='2'>
+                            <label class="btn btn-outline-primary" for="Q6-2">あまり同意しない</label>
+                            <input type="radio" class="btn-check" name="Q6" id="Q6-3" autocomplete="off" value='3'>
+                            <label class="btn btn-outline-primary" for="Q6-3">どちらでもない</label>
+                            <input type="radio" class="btn-check" name="Q6" id="Q6-4" autocomplete="off" value='4'>
+                            <label class="btn btn-outline-primary" for="Q6-4">少しそう思う</label>
+                            <input type="radio" class="btn-check" name="Q6" id="Q6-5" autocomplete="off" value='5'>
+                            <label class="btn btn-outline-primary" for="Q6-5">とてもそう思う</label>
+                        </div>
+                        <div class="card-text"><h4>Q7: 私は自分が<strong>他人の欠点を見つける傾向がある人間だ</strong>と思う。</h4></div>
+                        <div class="btn-group" role="group" required>
+                            <input type="radio" class="btn-check" name="Q7" id="Q7-1" autocomplete="off" value='1'>
+                            <label class="btn btn-outline-primary" for="Q7-1">全く同意しない</label>
+                            <input type="radio" class="btn-check" name="Q7" id="Q7-2" autocomplete="off" value='2'>
+                            <label class="btn btn-outline-primary" for="Q7-2">あまり同意しない</label>
+                            <input type="radio" class="btn-check" name="Q7" id="Q7-3" autocomplete="off" value='3'>
+                            <label class="btn btn-outline-primary" for="Q7-3">どちらでもない</label>
+                            <input type="radio" class="btn-check" name="Q7" id="Q7-4" autocomplete="off" value='4'>
+                            <label class="btn btn-outline-primary" for="Q7-4">少しそう思う</label>
+                            <input type="radio" class="btn-check" name="Q7" id="Q7-5" autocomplete="off" value='5'>
+                            <label class="btn btn-outline-primary" for="Q7-5">とてもそう思う</label>
+                        </div>
+                        <div class="card-text"><h4>Q8: 私は自分が<strong>きちんと仕事をする人だ</strong>と思う。</h4></div>
+                        <div class="btn-group" role="group" required>
+                            <input type="radio" class="btn-check" name="Q8" id="Q8-1" autocomplete="off" value='1'>
+                            <label class="btn btn-outline-primary" for="Q8-1">全く同意しない</label>
+                            <input type="radio" class="btn-check" name="Q8" id="Q8-2" autocomplete="off" value='2'>
+                            <label class="btn btn-outline-primary" for="Q8-2">あまり同意しない</label>
+                            <input type="radio" class="btn-check" name="Q8" id="Q8-3" autocomplete="off" value='3'>
+                            <label class="btn btn-outline-primary" for="Q8-3">どちらでもない</label>
+                            <input type="radio" class="btn-check" name="Q8" id="Q8-4" autocomplete="off" value='4'>
+                            <label class="btn btn-outline-primary" for="Q8-4">少しそう思う</label>
+                            <input type="radio" class="btn-check" name="Q8" id="Q8-5" autocomplete="off" value='5'>
+                            <label class="btn btn-outline-primary" for="Q8-5">とてもそう思う</label>
+                        </div>
+                        <div class="card-text"><h4>Q9: 私は自分が<strong>緊張しやすい人だ</strong>と思う。</h4></div>
+                        <div class="btn-group" role="group" required>
+                            <input type="radio" class="btn-check" name="Q9" id="Q9-1" autocomplete="off" value='1'>
+                            <label class="btn btn-outline-primary" for="Q9-1">全く同意しない</label>
+                            <input type="radio" class="btn-check" name="Q9" id="Q9-2" autocomplete="off" value='2'>
+                            <label class="btn btn-outline-primary" for="Q9-2">あまり同意しない</label>
+                            <input type="radio" class="btn-check" name="Q9" id="Q9-3" autocomplete="off" value='3'>
+                            <label class="btn btn-outline-primary" for="Q9-3">どちらでもない</label>
+                            <input type="radio" class="btn-check" name="Q9" id="Q9-4" autocomplete="off" value='4'>
+                            <label class="btn btn-outline-primary" for="Q9-4">少しそう思う</label>
+                            <input type="radio" class="btn-check" name="Q9" id="Q9-5" autocomplete="off" value='5'>
+                            <label class="btn btn-outline-primary" for="Q9-5">とてもそう思う</label>
+                        </div>
+                        <div class="card-text"><h4>Q10: 私は自分が<strong>想像力が豊かな人だ</strong>と思う。</h4></div>
+                        <div class="btn-group" role="group" required>
+                            <input type="radio" class="btn-check" name="Q10" id="Q10-1" autocomplete="off" value='1'>
+                            <label class="btn btn-outline-primary" for="Q10-1">全く同意しない</label>
+                            <input type="radio" class="btn-check" name="Q10" id="Q10-2" autocomplete="off" value='2'>
+                            <label class="btn btn-outline-primary" for="Q10-2">あまり同意しない</label>
+                            <input type="radio" class="btn-check" name="Q10" id="Q10-3" autocomplete="off" value='3'>
+                            <label class="btn btn-outline-primary" for="Q10-3">どちらでもない</label>
+                            <input type="radio" class="btn-check" name="Q10" id="Q10-4" autocomplete="off" value='4'>
+                            <label class="btn btn-outline-primary" for="Q10-4">少しそう思う</label>
+                            <input type="radio" class="btn-check" name="Q10" id="Q10-5" autocomplete="off" value='5'>
+                            <label class="btn btn-outline-primary" for="Q10-5">とてもそう思う</label>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="card-footer" onclick="goTask()" style="cursor: pointer;">
+                        <h2 style="text-align: center;">私はこの研究を十分に理解し、同意の上でこの作業を行いたいです。</h2>
+                        <h2 style="text-align: center;">(必要であれば、後で説明書を読み返すことができます。）</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="workspace">
+        <div id="toolbar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3"></div>
+                    <div class="col-lg-2 col-12">
+                        <span id="upload-area">
+                            <input id="upload-input"  type="file" accept="image/*"></input>
+                            <img id="upload-image"></img>
+                        </span>
+                    </div>
+                    <div class="col-lg-1 col-4">
+                        <span class="tool-area">
+                            <span class = "tool-name" onclick="brush()">
+                                <div id="brush"></div>
+                                <div id="brush-name">ブラシ</div>
+                            </span>
+                            
+                        </span>
+                    </div>
+                    <div class="col-lg-1 col-4">
+                        <span class = "tool-name" onclick="eraser()">
+                            <div id="eraser"></div>
+                            <div id="eraser-name">消しゴム</div>
+                        </span>
+                    </div>
+                    <div class="col-lg-2 col-4">
+                        <button id= "instruction" type="button" class="btn btn-outline-dark" onclick="goInstruction()">
+                            <strong>説明書きに戻る</strong>
+                        </button>
+                    </div>
+                    <div class="col-lg-3"></div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3"></div>
+                    <div class="col-lg-2 col-6" id="setting-area">
+                        <span><strong>ブラシ／イレーザーサイズ</strong></span>
+                        <input id = 'brush-size' type = 'range' min = '6' max = '20' value = '13' step = '1'></input>
+                    </div>
+                    <div class="col-lg-2 col-6" id="setting-area">
+                        <span><strong>モザイクサイズ</strong></span>
+                        <input id = 'mosaic-size' type = 'range' min = '6' max = '20' value = '20' step = '1'></input>
+                    </div>
+                    <button type="button" class="col-lg-2 col-6 btn btn-outline-dark" onclick="s3upload_photo()">
+                        <strong>仕上げとアップロード</strong>
+                    </button>
+                    <div class="col-lg-2 btn col-6" draggable="true" id="progress-bar" style="cursor:auto;"><h3>アップロード済み 0/10</h3></div>
+                    <div class="col-lg-3"></div>
+                </div>
+                <div class = "container"> 
+                    <div class = "row">
+                        <div class = "col-lg-4 col-12">
+                            <button type="button" id ='card-creator' class="btn btn-outline-dark" onclick="create_card()">
+                                <strong>アノテーションボックスを1つ追加する</strong>
+                            </button>
+                            <div id = "card-container">
+                            </div>
+                        </div>
+                        <div class = "col-lg-8 col-12" id="canvas-area">
+                            <canvas id = "mosaic"> </canvas>
+                            <canvas id = "ori"> </canvas>
+                        </div>
+                    </div>
+                </div> 
+                    
+                    
+                </div>
+            </div>
+           
+        </div>
+        
+    </div>
+    
+</body>
+<script src="./javascripts/main.js"></script>
+<script src="./javascripts/s3uploader.js"></script>
+<script src="./javascripts/canvas.js"></script>
+</html>
