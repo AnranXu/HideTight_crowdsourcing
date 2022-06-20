@@ -182,7 +182,7 @@ function create_card(){
     let card_body = document.createElement('div');
     card_body.id = 'cardheader-' + id;
     card_body.className = 'card-header col-12';
-    card_body.innerHTML = "<strong>Annotation Box</strong>";
+    card_body.innerHTML = "<strong>テキストボックス</strong>";
     let del = document.createElement('div');
     del.className = 'container';
     let del_row = document.createElement('div');
