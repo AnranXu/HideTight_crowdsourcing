@@ -175,7 +175,7 @@ function create_card(){
     let card = document.createElement('div');
     card.id = "card-" + id;
     card.className = 'card border-dark mb-3';
-    card.style = "width: 18rem;";
+    card.style = "width: 19rem;";
     //card.style.zIndex = "10";
     
 
@@ -318,7 +318,7 @@ function create_photo_info(){
     let card = document.createElement('div');
     card.id = "photo-" + len;
     card.className = 'card text-white bg-secondary mb-3';
-    card.style = "width: 18rem; font-size: 20px;";
+    card.style = "width: 19rem; font-size: 20px;";
     //card.style.zIndex = "10";
     
 
