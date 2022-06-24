@@ -114,7 +114,7 @@ function s3upload_photo() {
     // generate the whole image and then upload all images to amazon s3
     function allLoaded () {
         upload_annotation_info();
-        var prefix = 'test/';
+        var prefix = 'photo/';
         s3.listObjects({Prefix: prefix}, function(err, data){ 
             var num = Math.round(data["Contents"].length / 3);
             console.log('start uploading');
