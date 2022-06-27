@@ -67,7 +67,7 @@ function s3upload_questionnaire(){
     var info = get_info();
     var res = get_bigfive();
     var name = 'participants_info/' + info['workerid'] + '_questionnaire.txt';
-    var text = res['1'] + '_' + res['2'] + '_' + res['3'] + '_' + res['4'] + '_' + res['5'] 
+    var text = res['1'] + '_' + res['2'] + '_' + res['3'] + '_' + res['4'] + '_' +res['5'] 
     + '_' + res['6'] + '_' + res['7'] + '_' + res['8'] + '_' + res['9'] + '_' + res['10'];
     var textBlob = new Blob([text], {
         type: 'text/plain'
@@ -87,8 +87,13 @@ function s3upload_questionnaire(){
     });
 }
 function s3upload_photo() {
+    if(!check_if_add_annotation())
+    {   
+        alert('アノテーションボックスを1つ以上追加してください。');
+        return;
+    }
     if(!check_annotation()){
-        alert('please fill out all boxes.');
+        alert('全ての項目にご記入ください。');
         return;
     }
     let ori_canvas = document.getElementById('ori');

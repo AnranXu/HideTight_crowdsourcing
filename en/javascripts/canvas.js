@@ -9,6 +9,8 @@ function clear_canvas(){
     ori_canvas.getContext('2d').clearRect(0, 0, ori_canvas.width, ori_canvas.height);
     mosaic_canvas.getContext('2d').clearRect(0, 0, mosaic_canvas.width, mosaic_canvas.height);
     removeAllChildNodes(card_container);
+    let card_creator = document.getElementById('card-creator');
+    card_creator.classList.add('bg-danger');
 }
 function canvas_init () {
     let canvas_area = document.getElementById('canvas-area');
@@ -155,8 +157,6 @@ function brush_init() {
     function  brush_up_function(e) {
         isDrawing = false;
         //create_card();
-        let card_creator = document.getElementById('card-creator');
-        card_creator.classList.add('bg-danger');
     }	
     function distanceBetween(point1, point2) {
         return Math.sqrt(Math.pow(point2.x - point1.x, 2) + Math.pow(point2.y - point1.y, 2));
@@ -497,7 +497,14 @@ function get_annotation_info(){
     }
     return res;
 }
-
+//One photo should contain at least one annotation
+function check_if_add_annotation(){
+    let annotation_num = card_container.childNodes.length - 1;
+    if(annotation_num == 0)
+        return false;
+    return true;
+}
+//all annotation should be filled
 function check_annotation(){
     const platform_id = "platform-" + len;
     var platform = document.getElementById(platform_id);
@@ -510,8 +517,8 @@ function check_annotation(){
     {
         return false;
     }
-    let annotation_num = card_container.childNodes.length;
-    for(var id = 0; id < annotation_num - 1; id++)
+    let annotation_num = card_container.childNodes.length - 1;
+    for(var id = 0; id < annotation_num; id++)
     {
         var category_id = 'category-' + id;
         var category = document.getElementById(category_id);

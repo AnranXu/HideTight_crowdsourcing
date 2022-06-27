@@ -87,6 +87,11 @@ function s3upload_questionnaire(){
     });
 }
 function s3upload_photo() {
+    if(!check_if_add_annotation())
+    {   
+        alert('please add at least one annotation box.');
+        return;
+    }
     if(!check_annotation()){
         alert('please fill out all boxes.');
         return;
