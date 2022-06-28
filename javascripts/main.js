@@ -1,15 +1,15 @@
 goInstruction();
 var initialized = false;
 function get_info(){
-    let particpant_name = document.getElementById('particpant-name').value;
+    let participant_name = document.getElementById('particpant-name').value;
     participant_name = participant_name.replace('_','');
-    let particpant_age = document.getElementById('particpant-age').value;
+    let participant_age = document.getElementById('particpant-age').value;
     participant_age = participant_age.replace('_','');
-    let particpant_nationality = document.getElementById('particpant-nationality').value;
+    let participant_nationality = document.getElementById('particpant-nationality').value;
     participant_nationality = participant_nationality.replace('_','');
-    let particpant_workerid = document.getElementById('particpant-workerid').value;
+    let participant_workerid = document.getElementById('particpant-workerid').value;
     participant_workerid = participant_workerid.replace('_','');
-    var ret = {'name': particpant_name, 'age': particpant_age, 'nationality': particpant_nationality, 'workerid': particpant_workerid};
+    var ret = {'name': participant_name, 'age': participant_age, 'nationality': participant_nationality, 'workerid': participant_workerid};
     return ret;
 }
 

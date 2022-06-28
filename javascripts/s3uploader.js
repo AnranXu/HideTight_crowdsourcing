@@ -178,7 +178,7 @@ function s3upload_photo() {
                 if(err) {
                     reject('error');
                 }
-                alert('Successfully Uploaded!');
+                alert('アップロードに成功しました!');
                 clear_canvas();
                 }).on('httpUploadProgress', function (progress) {
                 var uploaded = parseInt((progress.loaded * 100) / progress.total);
