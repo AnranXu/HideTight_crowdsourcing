@@ -2,9 +2,13 @@ goInstruction();
 var initialized = false;
 function get_info(){
     let particpant_name = document.getElementById('particpant-name').value;
+    participant_name = participant_name.replace('_','');
     let particpant_age = document.getElementById('particpant-age').value;
+    participant_age = participant_age.replace('_','');
     let particpant_nationality = document.getElementById('particpant-nationality').value;
+    participant_nationality = participant_nationality.replace('_','');
     let particpant_workerid = document.getElementById('particpant-workerid').value;
+    participant_workerid = participant_workerid.replace('_','');
     var ret = {'name': particpant_name, 'age': particpant_age, 'nationality': particpant_nationality, 'workerid': particpant_workerid};
     return ret;
 }
@@ -18,7 +22,7 @@ function goTask(){
     let workerid = document.getElementById("particpant-workerid");
     if(!name.value || !age.value || !nationality.value || !workerid.value)
     {
-        alert("please fill your information!");
+        alert("情報を入力してください!");
         return;
     }
     var qs_res = get_bigfive();
@@ -26,7 +30,7 @@ function goTask(){
     for(var i = 0; i < keys.length; i++)
         if(typeof(qs_res[keys[i]]) == 'undefined')
         {
-            alert("please fill the questionnaire!");
+            alert("アンケートにお答えください!");
             return;
         }
     document.body.scrollTop = document.documentElement.scrollTop = 0;
