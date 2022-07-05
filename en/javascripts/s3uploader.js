@@ -199,6 +199,10 @@ function move_progress(){
     len += 1;
     var bar = document.getElementById('progress-bar'); 
     bar.innerHTML = "<h3>Uploaded " + String(len) + "/10</h3>";
+    if(len > 9)
+    {
+        alert("You have finished the task, thank you.");
+    }
 }
 function removeAllChildNodes(parent) {
     while (parent.firstChild) {
