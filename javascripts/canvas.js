@@ -488,7 +488,7 @@ function get_annotation_info(){
         if(reason.value == 5)
         {
             const reason_text_id = 'reason-text-' + id;
-            var reason_text = document.getElementById(recipient_text_id);
+            var reason_text = document.getElementById(reason_text_id);
             res[annotation_id].reason_text = reason_text.value;
         }
         var importance_id = 'importance-' + id;
