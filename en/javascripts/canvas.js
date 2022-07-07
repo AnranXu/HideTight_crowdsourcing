@@ -182,14 +182,14 @@ function create_card(){
     let card_body = document.createElement('div');
     card_body.id = 'cardheader-' + id;
     card_body.className = 'card-header col-12';
-    card_body.innerHTML = "<strong>アノテーションボックス</strong>";
+    card_body.innerHTML = "<strong>Annotation Box</strong>";
     let del = document.createElement('div');
     del.className = 'container';
     let del_row = document.createElement('div');
     del_row.className = 'row';
     let del_text = document.createElement('div');
     del_text.className = 'card-text col-10';
-    del_text.innerHTML = '<p style = "font-size: 14px;" class="text-danger">右のアイコンをクリックすると削除されます。</p>';
+    del_text.innerHTML = '<p style = "font-size: 14px;" class="text-danger">To detele this, click the right icon.</p>';
     let del_icon = document.createElement('div');
     del_icon.className = 'card-text col-2';
     //del.innerHTML = '<p class="text-danger">Delete this annotation.</p>';
@@ -206,7 +206,7 @@ function create_card(){
     del.appendChild(del_row);
     // First Question    
     let category = document.createElement('div');
-    category.innerHTML = "<strong>1：どんなコンテンツを隠しましたか？</strong>";
+    category.innerHTML = "<strong>1: What is the objective you covered?</strong>";
     category.className = 'card-text';
     let category_input = document.createElement('input');
     category_input.type = "text";
@@ -223,7 +223,7 @@ function create_card(){
     </select>
     */
     let reason = document.createElement('div');
-    reason.innerHTML = "<strong>2：なぜプライバシーを脅かす内容だと思いますか？</strong>";
+    reason.innerHTML = "<strong>2: Why do you think it is a privacy-threatening content?</strong>";
     reason.className = 'card-text';
     let reason_input = document.createElement('select');
     reason_input.className = 'form-select';
@@ -231,22 +231,22 @@ function create_card(){
     let reason_option_default = document.createElement('option');
     reason_option_default.value = 0;
     reason_option_default.selected = 'selected';
-    reason_option_default.innerHTML = '選択してください';
+    reason_option_default.innerHTML = 'Please select one option';
     let reason_option_1 = document.createElement('option');
     reason_option_1.value = 1;
-    reason_option_1.innerHTML = '私の身元を明らかにすることができる。';
+    reason_option_1.innerHTML = 'It can expose my identity.';
     let reason_option_2 = document.createElement('option');
     reason_option_2.value = 2;
-    reason_option_2.innerHTML = '自分の居場所を公開できる。';
+    reason_option_2.innerHTML = 'It can expose my location.';
     let reason_option_3 = document.createElement('option');
     reason_option_3.value = 3;
-    reason_option_3.innerHTML = '私の習慣を暴露することができます。';
+    reason_option_3.innerHTML = 'It can expose my habits.';
     let reason_option_4 = document.createElement('option');
     reason_option_4.value = 4;
-    reason_option_4.innerHTML = '自分の交友関係がわかる。';
+    reason_option_4.innerHTML = 'It can expose my social circle.';
     let reason_option_5 = document.createElement('option');
     reason_option_5.value = 5;
-    reason_option_5.innerHTML = 'その他の理由（以下にご記入ください。';
+    reason_option_5.innerHTML = 'Other reason (Please input below).';
     let reason_text = document.createElement('input');
     reason_text.type = 'text';
     reason_text.id = 'reason-text-' + id;
@@ -262,7 +262,7 @@ function create_card(){
         {
             reason_text.style.display = "";
             reason_text.required = "required";
-            reason_text.placeholder = "ここに理由を記入してください。";
+            reason_text.placeholder = "Please input reasons here";
         }
         else{
             reason_text.style.display = "None";
@@ -273,7 +273,7 @@ function create_card(){
     
     //importance
     let importance = document.createElement('div');
-    importance.innerHTML = "<strong>3: このプライバシーについて、あなたにとってどの程度重要だと思いますか？</strong>";
+    importance.innerHTML = "<strong>3: How important do you think about this privacy for you?</strong>";
     importance.className = 'card-text';
     let importance_input = document.createElement('input');
     importance_input.type = 'range';
@@ -282,13 +282,13 @@ function create_card(){
     importance_input.step = '1';
     importance_input.value = '4';
     importance_input.id = "importance-" + id;
-    let intensity = { '1': '全く重要でない',
-            '2': 'あまり重要でない',
-            '3': '少ししか重要ではない',
-            '4': 'どちらでもない',
-            '5': 'やや重要である',
-            '6': '中程度に重要である',
-            '7': '極めて重要である'
+    let intensity = { '1': 'extremely unimportant',
+            '2': 'moderately unimportant',
+            '3': 'slightly unimportant',
+            '4': 'neutral',
+            '5': 'slightly important',
+            '6': 'moderately important',
+            '7': 'extremely important'
     };
     importance_input.addEventListener('change', (e)=>{
         importance_show.innerHTML = '<strong>' + intensity[e.target.value] + '</strong>';
@@ -325,10 +325,10 @@ function create_photo_info(){
     let card_body = document.createElement('div');
     card_body.id = 'photo-' + len;
     card_body.className = 'card-header col-12';
-    card_body.innerHTML = "<strong>写真の基本情報</strong>";
+    card_body.innerHTML = "<strong>Basic Information</strong>";
 
     let platform = document.createElement('div');
-    platform.innerHTML = "<strong>1: この写真を共有するプラットフォームは何ですか？</strong>";
+    platform.innerHTML = "<strong>1: What is platform you share this photo on?</strong>";
     platform.className = 'card-text';
     let platform_input = document.createElement('select');
     platform_input.className = 'form-select';
@@ -336,34 +336,34 @@ function create_photo_info(){
     let platform_option_default = document.createElement('option');
     platform_option_default.value = 0;
     platform_option_default.selected = 'selected';
-    platform_option_default.innerHTML = '選択してください';
+    platform_option_default.innerHTML = 'Please select an option';
     let platform_option_1 = document.createElement('option');
     platform_option_1.value = 1;
-    platform_option_1.innerHTML = 'フェイスブック';
+    platform_option_1.innerHTML = 'Facebook';
     let platform_option_2 = document.createElement('option');
     platform_option_2.value = 2;
-    platform_option_2.innerHTML = 'ツイッター';
+    platform_option_2.innerHTML = 'Twitter';
     let platform_option_3 = document.createElement('option');
     platform_option_3.value = 3;
-    platform_option_3.innerHTML = 'インスタグラム';
+    platform_option_3.innerHTML = 'Instagram';
     let platform_option_4 = document.createElement('option');
     platform_option_4.value = 4;
-    platform_option_4.innerHTML = 'ライン';
+    platform_option_4.innerHTML = 'Line';
     let platform_option_5 = document.createElement('option');
     platform_option_5.value = 5;
-    platform_option_5.innerHTML = 'ウィーチャット';
+    platform_option_5.innerHTML = 'Wechat';
     let platform_option_6 = document.createElement('option');
     platform_option_6.value = 6;
     platform_option_6.innerHTML = 'Whatsapp';
     let platform_option_7 = document.createElement('option');
     platform_option_7.value = 7;
-    platform_option_7.innerHTML = 'メッセンジャー';
+    platform_option_7.innerHTML = 'Messenger';
      let platform_option_8 = document.createElement('option');
     platform_option_8.value = 8;
-    platform_option_8.innerHTML = 'スナップ';
+    platform_option_8.innerHTML = 'Snap';
      let platform_option_9 = document.createElement('option');
     platform_option_9.value = 9;
-    platform_option_9.innerHTML = 'その他のプラットフォーム（以下に入力してください。';
+    platform_option_9.innerHTML = 'Other platforms (Please input below).';
     let platform_text = document.createElement('input');
     platform_text.type = 'text';
     platform_text.id = 'platform-text-' + len;
@@ -383,7 +383,7 @@ function create_photo_info(){
         {
             platform_text.style.display = "";
             platform_text.required = "required";
-            platform_text.placeholder = "ここに記入してください。";
+            platform_text.placeholder = "Please input the platform here";
         }
         else{
             platform_text.style.display = "None";
@@ -393,7 +393,7 @@ function create_photo_info(){
     });
     
     let recipient = document.createElement('div');
-    recipient.innerHTML = "<strong>2: この写真を共有する相手は誰ですか？</strong>";
+    recipient.innerHTML = "<strong>2: What are recipients you share this photo to?</strong>";
     recipient.className = 'card-text';
     let recipient_input = document.createElement('select');
     recipient_input.className = 'form-select';
@@ -401,26 +401,26 @@ function create_photo_info(){
     let recipient_option_default = document.createElement('option');
     recipient_option_default.value = 0;
     recipient_option_default.selected = 'selected';
-    recipient_option_default.innerHTML = '選択してください';
+    recipient_option_default.innerHTML = 'Please select an option';
     let recipient_option_1 = document.createElement('option');
     recipient_option_1.value = 1;
-    recipient_option_1.innerHTML = 'あなたが追加した友人';
+    recipient_option_1.innerHTML = 'Friends you added';
     let recipient_option_2 = document.createElement('option');
     recipient_option_2.value = 2;
-    recipient_option_2.innerHTML = '一般公開';
+    recipient_option_2.innerHTML = 'Public';
     let recipient_option_3 = document.createElement('option');
     recipient_option_3.value = 3;
-    recipient_option_3.innerHTML = '放送番組';
+    recipient_option_3.innerHTML = 'Broadcast programme';
     let recipient_option_4 = document.createElement('option');
     recipient_option_4.value = 4;
-    recipient_option_4.innerHTML = 'その他（以下にご記入ください）。';
+    recipient_option_4.innerHTML = 'Other recipients (Please input below).';
     //reason_input.style.zIndex = "10";
     recipient_input.addEventListener('change', (e)=>{
         if(e.target.value == 4)
         {
             recipient_text.style.display = "";
             recipient_text.required = "required";
-            recipient_text.placeholder = "ここに記入してください。";
+            recipient_text.placeholder = "Please input the recipient here";
         }
         else{
             recipient_text.style.display = "None";

@@ -363,7 +363,7 @@ function create_photo_info(){
     platform_option_8.innerHTML = 'スナップ';
      let platform_option_9 = document.createElement('option');
     platform_option_9.value = 9;
-    platform_option_9.innerHTML = 'その他のプラットフォーム（以下に入力してください。';
+    platform_option_9.innerHTML = 'その他のプラットフォーム（以下に入力してください）。';
     let platform_text = document.createElement('input');
     platform_text.type = 'text';
     platform_text.id = 'platform-text-' + len;
