@@ -44,7 +44,7 @@ function s3_init() {
 function s3upload_info(){
     var info = get_info();
     var name = 'participants_info/' + info['workerid'] + '_info.txt';
-    var text = info['name'] + '_' + info['age'] + '_' + info['nationality'] + '_' + info['workerid'];
+    var text = info['name'] + '_' + info['age'] + '_' + info['gender'] + '_' + info['nationality'] + '_' + info['workerid'];
     var textBlob = new Blob([text], {
         type: 'text/plain'
     });

@@ -5,11 +5,12 @@ function get_info(){
     participant_name = participant_name.replace('_','');
     let participant_age = document.getElementById('particpant-age').value;
     participant_age = participant_age.replace('_','');
+    let participant_gender = $('input[name=gender]:checked').val();
     let participant_nationality = document.getElementById('particpant-nationality').value;
     participant_nationality = participant_nationality.replace('_','');
     let participant_workerid = document.getElementById('particpant-workerid').value;
     participant_workerid = participant_workerid.replace('_','');
-    var ret = {'name': participant_name, 'age': participant_age, 'nationality': participant_nationality, 'workerid': participant_workerid};
+    var ret = {'name': participant_name, 'age': participant_age, 'gender': participant_gender, 'nationality': participant_nationality, 'workerid': participant_workerid};
     return ret;
 }
 
